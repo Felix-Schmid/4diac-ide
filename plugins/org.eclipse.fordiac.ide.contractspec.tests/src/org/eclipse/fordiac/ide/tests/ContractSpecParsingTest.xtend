@@ -31,7 +31,7 @@ class ContractSpecParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			dummy_rule
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
