@@ -15,6 +15,10 @@ package org.eclipse.fordiac.ide.validation;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.fordiac.ide.contractSpec.Age;
+import org.eclipse.fordiac.ide.contractSpec.CausalAge;
+import org.eclipse.fordiac.ide.contractSpec.CausalFuncDecl;
+import org.eclipse.fordiac.ide.contractSpec.CausalReaction;
 import org.eclipse.fordiac.ide.contractSpec.ContractSpecPackage;
 import org.eclipse.fordiac.ide.contractSpec.EventExpr;
 import org.eclipse.fordiac.ide.contractSpec.EventSpec;
@@ -52,17 +56,37 @@ public class ContractSpecValidator extends AbstractContractSpecValidator {
 		}
 	}
 
+	// TODO: SingleEvent, Repetition still unclear regarding input/output ports...
+
 	@Check
 	public void checkReaction(final Reaction reaction) {
 		checkPortsOfType(reaction.getTrigger(), INPUT, ContractSpecPackage.Literals.REACTION__TRIGGER);
 		checkPortsOfType(reaction.getReaction(), OUTPUT, ContractSpecPackage.Literals.REACTION__REACTION);
 	}
-	// age & causalAge is reverse of reaction: whenever OUTPUT then INPUT
 
-	// TODO: for input/output ports check:
-	// age, CausalReaction, CausalAge, CausalFuncDecl
+	@Check
+	public void checkCausalReaction(final CausalReaction causalReaction) {
+		checkPortsOfType(causalReaction.getE1(), INPUT, ContractSpecPackage.Literals.CAUSAL_REACTION__E1);
+		checkPortsOfType(causalReaction.getE2(), OUTPUT, ContractSpecPackage.Literals.CAUSAL_REACTION__E2);
+	}
 
-	// SingleEvent, Repetition still unclear regarding input/output ports...
+	@Check
+	public void checkAge(final Age age) {
+		checkPortsOfType(age.getTrigger(), OUTPUT, ContractSpecPackage.Literals.AGE__TRIGGER);
+		checkPortsOfType(age.getReaction(), INPUT, ContractSpecPackage.Literals.AGE__REACTION);
+	}
+
+	@Check
+	public void checkCausalAge(final CausalAge causalAge) {
+		checkPortsOfType(causalAge.getE1(), OUTPUT, ContractSpecPackage.Literals.CAUSAL_AGE__E1);
+		checkPortsOfType(causalAge.getE2(), INPUT, ContractSpecPackage.Literals.CAUSAL_AGE__E2);
+	}
+
+	@Check
+	public void checkCausalFuncDecl(final CausalFuncDecl causalFuncDecl) {
+		checkPortOfType(causalFuncDecl.getP1(), INPUT, ContractSpecPackage.Literals.CAUSAL_FUNC_DECL__P1);
+		checkPortOfType(causalFuncDecl.getP2(), OUTPUT, ContractSpecPackage.Literals.CAUSAL_FUNC_DECL__P2);
+	}
 
 	private void checkPortsOfType(final EventExpr expr, final int type, final EStructuralFeature feature) {
 		if (expr.getEvent() != null) {
@@ -80,6 +104,13 @@ public class ContractSpecValidator extends AbstractContractSpecValidator {
 		for (final EventSpec es : list) {
 			checkPortOfType(es.getPort(), type, feature);
 		}
+	}
+
+	private void checkPortsOfType(final EventSpec es, final int type, final EStructuralFeature feature) {
+		if (es == null) {
+			return; // nothing to check
+		}
+		checkPortOfType(es.getPort(), type, feature);
 	}
 
 	private void checkPortOfType(final Port port, final int type, final EStructuralFeature feature) {
