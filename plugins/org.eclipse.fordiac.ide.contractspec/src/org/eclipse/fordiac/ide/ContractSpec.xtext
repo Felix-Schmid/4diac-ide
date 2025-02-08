@@ -17,6 +17,90 @@ generate contractSpec "http://www.eclipse.org/fordiac/ide/ContractSpec"
 
 Model:
 	timeSpec+=TimeSpec*;
-	
+
 TimeSpec:
-	'dummy_rule';
+	SingleEvent | Repetition | Reaction | Age |
+	CausalReaction | CausalAge | CausalFuncDecl | ClockDefinition;
+
+SingleEvent:
+	events=EventList "occurs" "within" interval=Interval
+	("using" "clock" clock=[ClockDefinition])?;
+
+Repetition:
+	events=EventList "occurs" "every" interval=Interval
+	("with" repetitionOptions=RepetitionOptions)?
+	("using" "clock" clock=[ClockDefinition])?;
+
+RepetitionOptions:
+	(jitter=Jitter ("and" offset=Offset)?) |
+	(offset=Offset ("and" jitter=Jitter)?);
+
+Jitter:
+	"jitter" time=TimeExpr;
+
+Offset:
+	"offset" time=TimeExpr;
+
+Reaction:
+	"whenever" trigger=EventExpr "occurs" "then" reaction=EventExpr "occurs" "within" interval=Interval
+	("once")? (n=INT "out" "of" outOf=INT "times")?
+	("using" "clock" clock=[ClockDefinition])?;
+
+Age:
+	"whenever" trigger=EventExpr "occurs" "then" reaction=EventExpr "has" "occurred" "within" interval=Interval
+	("once")? (n=INT "out" "of" outOf=INT "times")?
+	("using" "clock" clock=[ClockDefinition])?;
+
+CausalReaction:
+	"Reaction" "(" e1=EventSpec "," e2=EventSpec ")" "within" interval=Interval
+	("using" "clock" clock=[ClockDefinition])?;
+	
+CausalAge:
+	"Age" "(" e1=EventSpec "," e2=EventSpec ")" "within" interval=Interval
+	("using" "clock" clock=[ClockDefinition])?;
+	
+EventExpr:
+	event=EventSpec |
+	("(" events=EventList ")") |
+	("{" events=EventList "}");
+
+EventList:
+	events+=EventSpec ("," events+=EventSpec)*;
+
+EventSpec:
+	port=[Port] ("." eventValue=ID)?;
+
+Port:
+	name=ID isInput=INT; // component name implicit, isInput used as boolean
+
+Interval:
+	time=TimeExpr | 
+	(b1=Boundary v1=Value "," v2=Value b2=Boundary unit=Unit);
+
+TimeExpr:
+	value=Value unit=Unit;
+	
+Boundary:
+	"[" | "]";
+	
+Value:
+	integer=INT ("." fraction=INT)?;
+	
+Unit:
+	"s" | "ms" | "us" | "ns";
+
+CausalFuncDecl:
+	funcName=CausalFuncName "(" p1=[Port] "," p2=[Port] ")" ":=" relation=CausalRelation;
+	
+CausalFuncName:
+	"|>" | "<|";
+
+CausalRelation:
+	"FIFO" | "LIFO" | "ID";
+
+ClockDefinition:
+	"Clock" name=ID "has"
+	("resolution" resolution=TimeExpr)?
+	("skew" skew=TimeExpr)?
+	("drift" drift=Interval)?
+	("maxdiff" maxdiff=TimeExpr)?;

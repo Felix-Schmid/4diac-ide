@@ -3,7 +3,131 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="contractSpec" nsURI="http://www.eclipse.org/fordiac/ide/ContractSpec"
     nsPrefix="contractSpec">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeSpec" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeSpec" upperBound="-1"
+        eType="#//TimeSpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleEvent" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" eType="#//EventList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Repetition" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" eType="#//EventList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repetitionOptions" eType="#//RepetitionOptions"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepetitionOptions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jitter" eType="#//Jitter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offset" eType="#//Offset"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Jitter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" eType="#//TimeExpr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Offset">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" eType="#//TimeExpr"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reaction" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//EventExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reaction" eType="#//EventExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="n" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Age" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//EventExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reaction" eType="#//EventExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="n" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CausalReaction" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e1" eType="#//EventSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e2" eType="#//EventSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CausalAge" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e1" eType="#//EventSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e2" eType="#//EventSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interval" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//ClockDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventExpr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//EventSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" eType="#//EventList"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//EventSpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interval">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" eType="#//TimeExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="b1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="v1" eType="#//Value" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="v2" eType="#//Value" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="b2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeExpr">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fraction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CausalFuncDecl" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="funcName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p1" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p2" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClockDefinition" eSuperTypes="#//TimeSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolution" eType="#//TimeExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="skew" eType="#//TimeExpr"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drift" eType="#//Interval"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxdiff" eType="#//TimeExpr"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

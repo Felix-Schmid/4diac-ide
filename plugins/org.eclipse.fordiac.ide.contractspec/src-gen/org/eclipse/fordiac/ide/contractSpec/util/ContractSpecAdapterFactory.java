@@ -91,6 +91,101 @@ public class ContractSpecAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
+      public Adapter caseTimeSpec(TimeSpec object)
+      {
+        return createTimeSpecAdapter();
+      }
+      @Override
+      public Adapter caseSingleEvent(SingleEvent object)
+      {
+        return createSingleEventAdapter();
+      }
+      @Override
+      public Adapter caseRepetition(Repetition object)
+      {
+        return createRepetitionAdapter();
+      }
+      @Override
+      public Adapter caseRepetitionOptions(RepetitionOptions object)
+      {
+        return createRepetitionOptionsAdapter();
+      }
+      @Override
+      public Adapter caseJitter(Jitter object)
+      {
+        return createJitterAdapter();
+      }
+      @Override
+      public Adapter caseOffset(Offset object)
+      {
+        return createOffsetAdapter();
+      }
+      @Override
+      public Adapter caseReaction(Reaction object)
+      {
+        return createReactionAdapter();
+      }
+      @Override
+      public Adapter caseAge(Age object)
+      {
+        return createAgeAdapter();
+      }
+      @Override
+      public Adapter caseCausalReaction(CausalReaction object)
+      {
+        return createCausalReactionAdapter();
+      }
+      @Override
+      public Adapter caseCausalAge(CausalAge object)
+      {
+        return createCausalAgeAdapter();
+      }
+      @Override
+      public Adapter caseEventExpr(EventExpr object)
+      {
+        return createEventExprAdapter();
+      }
+      @Override
+      public Adapter caseEventList(EventList object)
+      {
+        return createEventListAdapter();
+      }
+      @Override
+      public Adapter caseEventSpec(EventSpec object)
+      {
+        return createEventSpecAdapter();
+      }
+      @Override
+      public Adapter casePort(Port object)
+      {
+        return createPortAdapter();
+      }
+      @Override
+      public Adapter caseInterval(Interval object)
+      {
+        return createIntervalAdapter();
+      }
+      @Override
+      public Adapter caseTimeExpr(TimeExpr object)
+      {
+        return createTimeExprAdapter();
+      }
+      @Override
+      public Adapter caseValue(Value object)
+      {
+        return createValueAdapter();
+      }
+      @Override
+      public Adapter caseCausalFuncDecl(CausalFuncDecl object)
+      {
+        return createCausalFuncDeclAdapter();
+      }
+      @Override
+      public Adapter caseClockDefinition(ClockDefinition object)
+      {
+        return createClockDefinitionAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -123,6 +218,291 @@ public class ContractSpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.TimeSpec <em>Time Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.TimeSpec
+   * @generated
+   */
+  public Adapter createTimeSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.SingleEvent <em>Single Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.SingleEvent
+   * @generated
+   */
+  public Adapter createSingleEventAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Repetition <em>Repetition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Repetition
+   * @generated
+   */
+  public Adapter createRepetitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.RepetitionOptions <em>Repetition Options</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.RepetitionOptions
+   * @generated
+   */
+  public Adapter createRepetitionOptionsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Jitter <em>Jitter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Jitter
+   * @generated
+   */
+  public Adapter createJitterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Offset <em>Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Offset
+   * @generated
+   */
+  public Adapter createOffsetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Reaction <em>Reaction</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Reaction
+   * @generated
+   */
+  public Adapter createReactionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Age <em>Age</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Age
+   * @generated
+   */
+  public Adapter createAgeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.CausalReaction <em>Causal Reaction</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.CausalReaction
+   * @generated
+   */
+  public Adapter createCausalReactionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.CausalAge <em>Causal Age</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.CausalAge
+   * @generated
+   */
+  public Adapter createCausalAgeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.EventExpr <em>Event Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.EventExpr
+   * @generated
+   */
+  public Adapter createEventExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.EventList <em>Event List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.EventList
+   * @generated
+   */
+  public Adapter createEventListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.EventSpec <em>Event Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.EventSpec
+   * @generated
+   */
+  public Adapter createEventSpecAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Port <em>Port</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Port
+   * @generated
+   */
+  public Adapter createPortAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Interval <em>Interval</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Interval
+   * @generated
+   */
+  public Adapter createIntervalAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.TimeExpr <em>Time Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.TimeExpr
+   * @generated
+   */
+  public Adapter createTimeExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.Value <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.Value
+   * @generated
+   */
+  public Adapter createValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.CausalFuncDecl <em>Causal Func Decl</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.CausalFuncDecl
+   * @generated
+   */
+  public Adapter createCausalFuncDeclAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.fordiac.ide.contractSpec.ClockDefinition <em>Clock Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.fordiac.ide.contractSpec.ClockDefinition
+   * @generated
+   */
+  public Adapter createClockDefinitionAdapter()
   {
     return null;
   }

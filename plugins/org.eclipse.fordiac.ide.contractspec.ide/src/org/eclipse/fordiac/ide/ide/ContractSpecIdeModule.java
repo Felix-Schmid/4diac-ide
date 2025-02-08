@@ -13,9 +13,9 @@
  *******************************************************************************/
 package org.eclipse.fordiac.ide.ide;
 
-
 /**
  * Use this class to register ide components.
  */
 public class ContractSpecIdeModule extends AbstractContractSpecIdeModule {
+	// not yet needed
 }

@@ -15,16 +15,21 @@ package org.eclipse.fordiac.ide.contractSpec.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.fordiac.ide.contractSpec.ContractSpecPackage;
 import org.eclipse.fordiac.ide.contractSpec.Model;
+import org.eclipse.fordiac.ide.contractSpec.TimeSpec;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,14 +47,14 @@ import org.eclipse.fordiac.ide.contractSpec.Model;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getTimeSpec() <em>Time Spec</em>}' attribute list.
+   * The cached value of the '{@link #getTimeSpec() <em>Time Spec</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTimeSpec()
    * @generated
    * @ordered
    */
-  protected EList<String> timeSpec;
+  protected EList<TimeSpec> timeSpec;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,13 +83,29 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<String> getTimeSpec()
+  public EList<TimeSpec> getTimeSpec()
   {
     if (timeSpec == null)
     {
-      timeSpec = new EDataTypeEList<String>(String.class, this, ContractSpecPackage.MODEL__TIME_SPEC);
+      timeSpec = new EObjectContainmentEList<TimeSpec>(TimeSpec.class, this, ContractSpecPackage.MODEL__TIME_SPEC);
     }
     return timeSpec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ContractSpecPackage.MODEL__TIME_SPEC:
+        return ((InternalEList<?>)getTimeSpec()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -116,7 +137,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ContractSpecPackage.MODEL__TIME_SPEC:
         getTimeSpec().clear();
-        getTimeSpec().addAll((Collection<? extends String>)newValue);
+        getTimeSpec().addAll((Collection<? extends TimeSpec>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -153,23 +174,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return timeSpec != null && !timeSpec.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (timeSpec: ");
-    result.append(timeSpec);
-    result.append(')');
-    return result.toString();
   }
 
 } //ModelImpl

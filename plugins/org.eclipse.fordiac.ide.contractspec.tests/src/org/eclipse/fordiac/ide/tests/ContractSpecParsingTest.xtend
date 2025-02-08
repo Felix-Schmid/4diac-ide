@@ -31,7 +31,7 @@ class ContractSpecParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			dummy_rule
+			PIN occurs within 10ms
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
